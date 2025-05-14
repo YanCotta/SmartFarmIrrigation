@@ -1,24 +1,32 @@
 import requests
 import sqlite3
 
-API_KEY = "SUA_CHAVE_API_AQUI"  # Substitua pela sua chave
+# OpenWeather API configuration (replace with your key)
+API_KEY = "YOUR_API_KEY_HERE"  # Get yours at https://openweathermap.org/
 CITY = "Sao Paulo,BR"
 URL = f"http://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units=metric"
 
-# Obter dados climáticos
-response = requests.get(URL).json()
-rain = response.get('rain', {}).get('1h', 0)  # Chuva em 1h (mm)
+try:
+    # Fetch weather data
+    response = requests.get(URL)
+    response.raise_for_status()  # Raise exception for HTTP errors
+    data = response.json()
+    rain = data.get('rain', {}).get('1h', 0)  # Rainfall in last hour (mm)
+except requests.exceptions.RequestException as e:
+    print(f"Error fetching weather data: {e}")
+    rain = 0  # Default to no rain if API fails
 
-# Conectar ao banco
+# Connect to database and get latest sensor data
 conn = sqlite3.connect('irrigation.db')
 cursor = conn.cursor()
 cursor.execute("SELECT humidity, phosphorus, potassium, ph FROM irrigation_data ORDER BY id DESC LIMIT 1")
 humidity, phosphorus, potassium, ph = cursor.fetchone()
 
-# Lógica de irrigação ajustada
+# Adjusted irrigation logic with weather
 irrigate = (humidity < 50 and phosphorus and potassium and 6 <= ph <= 7 and rain < 1)
 
-print(f"Chuva: {rain}mm | Umidade: {humidity}% | Fósforo: {phosphorus} | Potássio: {potassium} | pH: {ph}")
-print(f"Irrigar? {'Sim' if irrigate else 'Não'}")
+# Output results
+print(f"Rain: {rain}mm | Humidity: {humidity}% | Phosphorus: {phosphorus} | Potassium: {potassium} | pH: {ph}")
+print(f"Irrigate? {'Yes' if irrigate else 'No'}")
 
 conn.close()

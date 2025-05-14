@@ -1,33 +1,36 @@
 import sqlite3
 
-# Conectar ao banco
+# Connect to SQLite database
 conn = sqlite3.connect('irrigation.db')
 cursor = conn.cursor()
 
-# Criar tabela alinhada ao MER simplificado
+# Create table aligned with simplified MER from Fase 2
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS irrigation_data (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    humidity REAL,          -- Correspondente a Leitura_Sensor (Tipo_Valor = 'umidade')
-    phosphorus INTEGER,     -- Correspondente a Leitura_Sensor (Tipo_Valor = 'P')
-    potassium INTEGER,      -- Correspondente a Leitura_Sensor (Tipo_Valor = 'K')
-    ph REAL,                -- Correspondente a Leitura_Sensor (Tipo_Valor = 'pH')
-    pump_state INTEGER,     -- Estado da bomba (lógica de irrigação)
+    humidity REAL,          -- Soil humidity percentage
+    phosphorus INTEGER,     -- Phosphorus presence (0 or 1)
+    potassium INTEGER,      -- Potassium presence (0 or 1)
+    ph REAL,                -- Soil pH value
+    pump_state INTEGER,     -- Pump state (0 = off, 1 = on)
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 )
 ''')
 
-# Funções CRUD
+# CRUD Functions
 def create_data(humidity, phosphorus, potassium, ph, pump_state):
+    """Insert new sensor data into the database."""
     cursor.execute('INSERT INTO irrigation_data (humidity, phosphorus, potassium, ph, pump_state) VALUES (?, ?, ?, ?, ?)',
                    (humidity, phosphorus, potassium, ph, pump_state))
     conn.commit()
 
 def read_all():
+    """Retrieve all data from the irrigation_data table."""
     cursor.execute('SELECT * FROM irrigation_data')
     return cursor.fetchall()
 
 def update_data(id, humidity=None, pump_state=None):
+    """Update humidity or pump_state for a specific record."""
     if humidity is not None:
         cursor.execute('UPDATE irrigation_data SET humidity = ? WHERE id = ?', (humidity, id))
     if pump_state is not None:
@@ -35,24 +38,23 @@ def update_data(id, humidity=None, pump_state=None):
     conn.commit()
 
 def delete_data(id):
+    """Delete a specific record by ID."""
     cursor.execute('DELETE FROM irrigation_data WHERE id = ?', (id,))
     conn.commit()
 
-# Exemplo de uso
+# Example usage
 if __name__ == "__main__":
-    # Inserir dados simulados
+    # Insert simulated data
     create_data(45.0, 1, 1, 6.5, 1)
     create_data(60.0, 0, 1, 7.2, 0)
 
-    # Consultar dados
-    print("Dados armazenados:")
+    # Print stored data
+    print("Stored Data:")
     for row in read_all():
         print(row)
 
-    # Atualizar um registro
+    # Update and delete examples
     update_data(1, humidity=50.0)
-
-    # Deletar um registro
     delete_data(2)
 
     conn.close()

@@ -3,39 +3,44 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Conectar ao banco
+# Connect to database
 conn = sqlite3.connect('irrigation.db')
 
-# Carregar dados
-df = pd.read_sql_query("SELECT * FROM irrigation_data", conn)
+# Load data with formatted timestamp
+df = pd.read_sql_query("SELECT id, humidity, phosphorus, potassium, ph, pump_state, strftime('%Y-%m-%d %H:%M:%S', timestamp) as timestamp FROM irrigation_data", conn)
 
-# Título
-st.title("Dashboard de Irrigação Inteligente")
+# Dashboard title
+st.title("Smart Irrigation Dashboard")
 
-# Gráficos
-st.subheader("Umidade do Solo")
+# Plot humidity
+st.subheader("Soil Humidity")
 fig, ax = plt.subplots()
 ax.plot(df['timestamp'], df['humidity'], 'b-')
-ax.set_xlabel("Tempo")
-ax.set_ylabel("Umidade (%)")
+ax.set_xlabel("Time")
+ax.set_ylabel("Humidity (%)")
+plt.xticks(rotation=45)
 st.pyplot(fig)
 
-st.subheader("pH do Solo")
+# Plot pH
+st.subheader("Soil pH")
 fig, ax = plt.subplots()
 ax.plot(df['timestamp'], df['ph'], 'g-')
-ax.set_xlabel("Tempo")
+ax.set_xlabel("Time")
 ax.set_ylabel("pH")
+plt.xticks(rotation=45)
 st.pyplot(fig)
 
-st.subheader("Estado da Bomba")
+# Plot pump state
+st.subheader("Pump State")
 fig, ax = plt.subplots()
 ax.plot(df['timestamp'], df['pump_state'], 'r-')
-ax.set_xlabel("Tempo")
-ax.set_ylabel("Bomba (0=Desligada, 1=Ligada)")
+ax.set_xlabel("Time")
+ax.set_ylabel("Pump (0=Off, 1=On)")
+plt.xticks(rotation=45)
 st.pyplot(fig)
 
-# Tabela de dados
-st.subheader("Dados Brutos")
+# Display raw data table
+st.subheader("Raw Data")
 st.write(df)
 
 conn.close()

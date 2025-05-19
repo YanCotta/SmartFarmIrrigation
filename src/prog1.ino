@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <DHT.h>
+#include <DHT.h> 
 
 // Define pin constants
 #define DHT_PIN 23          // DHT22 sensor pin

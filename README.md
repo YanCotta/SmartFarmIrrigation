@@ -24,77 +24,131 @@
 
 - André Godoi Chiovato
 
-O "SmartFarmIrrigation" é um sistema inteligente de irrigação desenvolvido para a FarmTech Solutions como parte do curso de Inteligência Artificial e Machine Learning da FIAP. Este projeto simula um sistema IoT que utiliza um ESP32 no Wokwi para coletar dados de sensores (umidade do solo, pH, fósforo e potássio) e controlar um relé para irrigação com base em condições ambientais e climáticas. Os dados são armazenados em um banco SQLite, visualizados em um dashboard interativo com Streamlit e ajustados por integração com a API OpenWeather, que considera a chuva recente.
+## 📝 Sobre o Projeto
 
-O objetivo é otimizar o uso da água em fazendas, irrigando apenas quando necessário (umidade < 50%, pH entre 6-7, presença de nutrientes e chuva < 1mm). Desenvolvido com C++ (ESP32), Python (processamento e visualização) e SQL (armazenamento), o projeto reflete habilidades avançadas em IoT, integração de APIs e visualização de dados, alinhando-se ao MER simplificado da Fase 2 do curso.
+O **SmartFarmIrrigation** é um sistema inteligente de irrigação desenvolvido para a FarmTech Solutions como parte do curso de Inteligência Artificial e Machine Learning da FIAP. Este projeto simula um sistema IoT que utiliza um ESP32 no Wokwi para coletar dados de sensores (umidade do solo, pH, fósforo e potássio) e controlar um relé para irrigação com base em condições ambientais e climáticas.
 
-## 📁 Estrutura de pastas
+Os dados são armazenados em um banco **SQLite**, visualizados em um dashboard interativo com **Streamlit** e ajustados pela integração com a **API OpenWeather**, que considera chuvas recentes.
 
-Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
+O objetivo é otimizar o uso da água em fazendas, irrigando apenas quando necessário (umidade < 50%, pH entre 6–7, presença de nutrientes e chuva < 1mm). Desenvolvido com **C++ (ESP32)**, **Python** (processamento, visualização e integração de APIs) e **SQL** (armazenamento), o projeto cumpre os requisitos do curso e inclui os desafios "Ir Além" com um dashboard interativo e integração com API pública. A modelagem de dados segue o MER simplificado da Fase 2, utilizando uma única tabela `irrigation_data` para eficiência.
 
-- **.github**: Arquivos de configuração específicos do GitHub.
-- **assets**: Imagens e elementos não-estruturados (e.g., logo FIAP).
-- **config**: Arquivos de configuração do projeto.
-- **document**: Documentos do projeto, com subpasta "other" para itens complementares.
-- **scripts**: Scripts Python para banco de dados, dashboard e integração climática.
-- **src**: Código-fonte, com subpasta "esp32" para o código do ESP32.
-- **README.md**: Guia geral do projeto.
-- **wokwi.toml**: Configuração do Wokwi.
-- **platformio.ini**: Configuração do PlatformIO.
-- **diagram.json**: Placeholder para diagramas futuros.
-- **.gitignore** e **.gitattributes**: Configurações Git.
-- **.pio/build**: Diretório de build do PlatformIO.
-- **.vscode**: Configurações do VS Code.
+---
 
-## 🔧 Como executar o código
+## 📸 Visualizações
 
-### Pré-requisitos
-- **IDE**: Visual Studio Code com extensões PlatformIO e Wokwi Simulator.
-- **Serviços**: Conta no OpenWeather para obter uma chave API.
-- **Bibliotecas C++**: Arduino, DHT (instaladas via PlatformIO).
-- **Bibliotecas Python**: Listadas em `scripts/requirements.txt`.
-- **Versões**: Python 3.9+, PlatformIO 6.0+, Wokwi CLI (opcional).
+*(Imagens localizadas na pasta `assets`)*
 
-### Instalação e Execução
-1. **Clone o Repositório**:
-   ```bash
-   git clone https://github.com/YanCotta/SmartFarmIrrigation.git
-   cd SmartFarmIrrigation
+---
 
-### Configure o ESP32:
-- Abra o projeto no VS Code com PlatformIO.
-- Compile e envie src/esp32/prog1.ino para o Wokwi via wokwi.toml.
-- Simule no Wokwi (use o botão "Run Simulation").
-- Instale Dependências Python:
+## 📁 Estrutura de Pastas
 
-```bash
-
-Copy
-pip install -r scripts/requirements.txt
+```
+.github/                 # Configurações do GitHub
+assets/                 # Imagens (logo FIAP, capturas de tela)
+document/               # Documentação (ai_project_document_fiap.md)
+scripts/                # Scripts Python
+├── database.py         # Criação e gerenciamento do SQLite
+├── dashboard.py        # Dashboard Streamlit
+├── weather_integration.py  # Integração OpenWeather
+├── verify_db.py        # Verificador de banco
+├── requirements.txt    # Dependências
+src/                    # Código C++ para ESP32
+.pio/build/             # Build PlatformIO (ignorado)
+.vscode/                # Configurações VS Code
+diagram.json            # Configuração circuito Wokwi
+platformio.ini          # Configuração PlatformIO
+wokwi.toml              # Configuração Wokwi
+.gitignore, .gitattributes
+README.md               # Este arquivo
 ```
 
-### Configure a API OpenWeather:
-- Substitua YOUR_API_KEY_HERE em scripts/weather_integration.py pela sua chave (obtenha em https://openweathermap.org/).
+---
 
-### Execute os Scripts:
-- Banco de Dados: python scripts/database.py (gera irrigation.db).
-- Dashboard: streamlit run scripts/dashboard.py.
-- Integração Climática: python scripts/weather_integration.py.
+## 🔧 Como Executar o Código
 
-### Teste o Fluxo:
-- Simule o ESP32 no Wokwi, insira dados no banco via database.py, visualize no dashboard e ajuste com weather_integration.py.
+### Pré-requisitos
 
-## 🗃 Histórico de lançamentos
-### 0.5.0
-- Integração com OpenWeather API e ajustes finais.
-### 0.4.0
-- Dashboard Streamlit implementado.
-### 0.3.0
-- Banco de dados SQLite com CRUD.
-### 0.2.0
-- Lógica de irrigação no ESP32.
-### 0.1.0
-- Estrutura inicial e simulação Wokwi.
+- **IDE**: Visual Studio Code com extensões PlatformIO e Wokwi Simulator
+- **Conta OpenWeather**: https://openweathermap.org/
+- **Bibliotecas C++**: Arduino, DHT (via PlatformIO)
+- **Bibliotecas Python**: Streamlit, Pandas, Matplotlib, Requests
+- **Versões recomendadas**:
+  - Python 3.9+
+  - PlatformIO 6.0+
+  - Wokwi CLI (opcional)
+
+---
+
+### Passos para Instalação e Execução
+
+#### 1. Clonar o Repositório
+```bash
+git clone https://github.com/YanCotta/SmartFarmIrrigation.git
+cd SmartFarmIrrigation
+```
+
+#### 2. Configurar o Ambiente Python
+```bash
+pip install -r scripts/requirements.txt
+streamlit --version  # Verifique a instalação
+```
+
+#### 3. Configurar a Chave da API OpenWeather
+
+Edite `scripts/weather_integration.py`:
+```python
+API_KEY = "YOUR_API_KEY_HERE"
+```
+
+#### 4. Executar o Banco de Dados
+```bash
+python scripts/database.py
+python scripts/verify_db.py
+```
+
+#### 5. Simular o ESP32 no Wokwi
+- Abrir no VS Code com PlatformIO
+- Compilar `src/prog1.ino`:
+```bash
+pio run
+```
+- Executar simulação Wokwi:
+  - Umidade: < 50% (ex: 45%)
+  - LDR: pH 6–7 (~50% slider)
+  - Fósforo (D18), Potássio (D19): pressionar
+- Monitor Serial: 
+  - `Humidity: 45% | Phosphorus: 1 | Potassium: 1 | pH: 6.5 | Pump: 1`
+
+#### 6. Executar o Dashboard Streamlit
+```bash
+streamlit run scripts/dashboard.py
+```
+Acesse: [http://localhost:8501](http://localhost:8501)
+
+#### 7. Executar a Integração Climática
+```bash
+python scripts/weather_integration.py
+```
+Saída: `Irrigate? Yes` (se chuva < 1mm)
+
+#### 8. Testar o Fluxo Completo
+- Simular dados no Wokwi
+- Inserir no banco via `database.py`
+- Visualizar no dashboard
+- Ajustar irrigação com `weather_integration.py`
+
+---
+
+## 🗃 Histórico de Lançamentos
+
+- **1.0.0**: Projeto finalizado (simulação Wokwi, SQLite, dashboard, OpenWeather)
+- **0.5.0**: Integração OpenWeather finalizada
+- **0.4.0**: Dashboard com gráficos e tabela
+- **0.3.0**: Banco SQLite com CRUD
+- **0.2.0**: Lógica de irrigação no ESP32
+- **0.1.0**: Estrutura inicial e Wokwi configurado
+
+---
 
 ## 📋 Licença
 

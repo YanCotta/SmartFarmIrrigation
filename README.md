@@ -10,20 +10,19 @@
 
 ## Nome do grupo
 
-## 👨‍🎓 Integrantes:
-- <a href="https://www.linkedin.com/in/your-profile">Nome do integrante 1</a>
-- <a href="https://www.linkedin.com/in/your-profile">Nome do integrante 2</a>
-- <a href="https://www.linkedin.com/in/your-profile">Nome do integrante 3</a>
-- <a href="https://www.linkedin.com/in/your-profile">Nome do integrante 4</a>
-- <a href="https://www.linkedin.com/in/your-profile">Nome do integrante 5</a>
+## 👨‍🎓 Integrantes
 
-## 👩‍🏫 Professores:
+- [Yan Cotta](https://www.linkedin.com/in/yan-cotta/)
+
+## 👩‍🏫 Professores
+
 ### Tutor(a)
-- <a href="https://www.linkedin.com/in/tutor-profile">Nome do Tutor</a>
-### Coordenador(a)
-- <a href="https://www.linkedin.com/in/coordinator-profile">Nome do Coordenador</a>
 
-## 📜 Descrição
+- Lucas Gomes Moreira
+
+### Coordenador(a)
+
+- André Godoi Chiovato
 
 O "SmartFarmIrrigation" é um sistema inteligente de irrigação desenvolvido para a FarmTech Solutions como parte do curso de Inteligência Artificial e Machine Learning da FIAP. Este projeto simula um sistema IoT que utiliza um ESP32 no Wokwi para coletar dados de sensores (umidade do solo, pH, fósforo e potássio) e controlar um relé para irrigação com base em condições ambientais e climáticas. Os dados são armazenados em um banco SQLite, visualizados em um dashboard interativo com Streamlit e ajustados por integração com a API OpenWeather, que considera a chuva recente.
 
@@ -59,7 +58,7 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 ### Instalação e Execução
 1. **Clone o Repositório**:
    ```bash
-   git clone https://github.com/your-username/SmartFarmIrrigation.git
+   git clone https://github.com/YanCotta/SmartFarmIrrigation.git
    cd SmartFarmIrrigation
 
 ### Configure o ESP32:
@@ -86,15 +85,15 @@ pip install -r scripts/requirements.txt
 - Simule o ESP32 no Wokwi, insira dados no banco via database.py, visualize no dashboard e ajuste com weather_integration.py.
 
 ## 🗃 Histórico de lançamentos
-### 0.5.0 - XX/XX/2024
+### 0.5.0
 - Integração com OpenWeather API e ajustes finais.
-### 0.4.0 - XX/XX/2024
+### 0.4.0
 - Dashboard Streamlit implementado.
-### 0.3.0 - XX/XX/2024
+### 0.3.0
 - Banco de dados SQLite com CRUD.
-### 0.2.0 - XX/XX/2024
+### 0.2.0
 - Lógica de irrigação no ESP32.
-### 0.1.0 - XX/XX/2024
+### 0.1.0
 - Estrutura inicial e simulação Wokwi.
 
 ## 📋 Licença

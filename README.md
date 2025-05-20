@@ -38,7 +38,8 @@ A modelagem de dados segue o **Modelo Entidade-Relacionamento (MER)** simplifica
 *Saída da integração com a API OpenWeather.*  
 
 ![Dashboard Streamlit](./assets/streamlit_dashboard.pdf)  
-*Dashboard interativo exibindo dados dos sensores.*  
+*Dashboard interativo exibindo dados dos sensores; PDF file, por isso não exibida aqui,*
+*procurar na pasta `assets`)*
 
 *(Imagens localizadas na pasta `assets`)*
 

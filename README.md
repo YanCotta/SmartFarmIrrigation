@@ -33,10 +33,12 @@ A modelagem de dados segue o **Modelo Entidade-Relacionamento (MER)** simplifica
 ## 📸 Visualizações
 ![Simulação Wokwi](./assets/wokwi_simulation.PNG)  
 *Simulação do ESP32 no Wokwi com sensores e relé.*  
-![Dashboard Streamlit](./assets/streamlit_dashboard.pdf)  
-*Dashboard interativo exibindo dados dos sensores.*  
+
 ![Integração Climática](./assets/openweather_functional_api.PNG)  
 *Saída da integração com a API OpenWeather.*  
+
+![Dashboard Streamlit](./assets/streamlit_dashboard.pdf)  
+*Dashboard interativo exibindo dados dos sensores.*  
 
 *(Imagens localizadas na pasta `assets`)*
 

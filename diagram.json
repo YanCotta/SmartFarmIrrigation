@@ -51,6 +51,13 @@
       "top": 220,
       "left": 120,
       "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": 450,
+      "left": 200,
+      "attrs": { "pins": "i2c", "i2c-address": "0x27" }
     }
   ],
   "connections": [
@@ -67,6 +74,10 @@
     ["btn2:2", "esp:GND.4", "black", ["v0"]],
     ["esp:3V3", "relay:VCC", "red", ["v0"]],
     ["esp:GND.5", "relay:GND", "black", ["v0"]],
-    ["esp:D26", "relay:IN", "blue", ["v0"]]
+    ["esp:D26", "relay:IN", "blue", ["v0"]],
+    ["esp:3V3", "lcd:VCC", "red", ["v0"]],
+    ["esp:GND.6", "lcd:GND", "black", ["v0"]],
+    ["esp:D21", "lcd:SDA", "green", ["v0"]],
+    ["esp:D22", "lcd:SCL", "blue", ["v0"]]
   ]
 }

@@ -55,9 +55,13 @@ scripts/                 # Scripts Python
 ├── dashboard.py         # Dashboard interativo com Streamlit
 ├── weather_integration.py # Integração com a API OpenWeather
 ├── verify_db.py         # Script para verificar o banco de dados
+├── populate_db.py       # Geração de dados sintéticos para ML
+├── train_model.py       # Pipeline de treinamento de ML
 ├── requirements.txt     # Dependências Python
+├── irrigation_model.joblib # Modelo ML treinado (gerado)
 src/                     # Código-fonte C++ para ESP32
-├── prog1.ino            # Código principal do ESP32
+├── config.h             # Arquivo de configuração centralizado
+├── prog1.ino            # Código principal do ESP32 (refatorado)
 .pio/build/              # Arquivos de build do PlatformIO (ignorado no git)
 .vscode/                 # Configurações do Visual Studio Code
 diagram.json             # Configuração do circuito no Wokwi
@@ -79,6 +83,8 @@ O MER da Fase 2 foi projetado para atender às necessidades do sistema de irriga
 - **potassium**: Presença de potássio (booleano, 0 ou 1).
 - **pump_state**: Estado da bomba de irrigação (booleano, 0 ou 1).
 - **timestamp**: Data e hora da leitura (texto, formato ISO).
+- **prediction_confidence**: Confiança da predição ML (float, 0.0-1.0).
+- **model_version**: Versão do modelo utilizado (texto, ex: "v1.0").
 
 Essa modelagem reflete uma abordagem prática e eficiente, eliminando a necessidade de múltiplas tabelas e relações complexas, já que o foco do projeto é a simulação e a análise de dados em tempo real.
 
@@ -96,6 +102,22 @@ Essa modelagem reflete uma abordagem prática e eficiente, eliminando a necessid
 - **Script**: `database.py` (Python), responsável pela criação da tabela `irrigation_data` e operações CRUD.
 - **Verificação**: `verify_db.py` para validar a integridade dos dados inseridos.
 - **MER**: Simplificado, conforme descrito na seção anterior, com justificativa para a escolha de uma única tabela.
+
+### Entrega 3 (Fase 4): Refatoração Profissional e Machine Learning
+- **Firmware ESP32**: Código completamente refatorado para seguir padrões profissionais:
+  - Sistema não-bloqueante utilizando `millis()` ao invés de `delay()`
+  - Arquivo de configuração centralizado (`config.h`)
+  - Display LCD I2C 16x2 para visualização em tempo real
+  - Saída formatada para Serial Plotter
+- **Machine Learning Pipeline**: Sistema completo de ML implementado:
+  - Pipeline scikit-learn com StandardScaler e RandomForestClassifier
+  - GridSearchCV para otimização automática de hiperparâmetros
+  - Modelo treinado e salvo como `irrigation_model.joblib`
+- **Banco de Dados Expandido**: Novas colunas adicionadas:
+  - `prediction_confidence`: Confiança das predições do modelo
+  - `model_version`: Versionamento dos modelos ML
+- **Geração de Dados**: Script `populate_db.py` para criar dataset sintético realista
+- **Controle de Versão**: Branch `feature/phase-4` para desenvolvimento isolado
 
 ---
 
@@ -145,9 +167,11 @@ Edite o arquivo `scripts/weather_integration.py` e insira sua chave:
 API_KEY = "SUA_CHAVE_AQUI"
 ```
 
-#### 4. Executar o Banco de Dados
+#### 4. Executar o Banco de Dados e ML Pipeline
 ```bash
-python scripts/database.py  # Cria o banco e a tabela
+python scripts/database.py  # Cria o banco e a tabela (agora com colunas ML)
+python scripts/populate_db.py  # Gera 200 registros sintéticos para treinamento
+python scripts/train_model.py  # Treina o modelo ML e salva como .joblib
 python scripts/verify_db.py  # Verifica os dados inseridos
 ```
 
@@ -187,6 +211,12 @@ Saída esperada: `Irrigate? Yes` (se chuva < 1mm) ou `Irrigate? No` (se chuva > 
 ---
 
 ## 🗃 Histórico de Lançamentos
+- **2.0.0 (Fase 4)**: Refatoração profissional completa:
+  - Firmware ESP32 não-bloqueante com display LCD I2C
+  - Pipeline de Machine Learning com RandomForestClassifier
+  - Banco expandido com colunas ML (confidence, model_version)
+  - Sistema de geração de dados sintéticos
+  - Controle de versão com feature branches
 - **1.0.0**: Projeto finalizado com simulação Wokwi, banco SQLite, dashboard e integração OpenWeather.
 - **0.5.0**: Integração com a API OpenWeather concluída.
 - **0.4.0**: Dashboard implementado com gráficos e tabelas interativas.

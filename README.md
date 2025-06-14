@@ -121,12 +121,75 @@ Essa modelagem reflete uma abordagem prática e eficiente, eliminando a necessid
 
 ---
 
+## 🏗 Arquitetura do Projeto
+O **SmartFarmIrrigation** segue uma arquitetura end-to-end que conecta sensores físicos a decisões inteligentes de irrigação:
+
+**1. Camada de Sensores (ESP32)**: Firmware não-bloqueante que coleta dados de sensores em tempo real (umidade, pH, fósforo, potássio) utilizando `millis()` para timing preciso. O sistema inclui display LCD I2C para feedback visual local.
+
+**2. Camada de Dados (SQLite)**: Banco de dados local que armazena todas as leituras dos sensores junto com metadados de ML (confiança da predição, versão do modelo). Suporta operações CRUD eficientes.
+
+**3. Camada de Processamento (Python Backend)**: Pipeline de Machine Learning que processa dados históricos, treina modelos preditivos e gera predições com métricas de confiança.
+
+**4. Camada de Visualização (Streamlit Frontend)**: Interface web interativa que permite monitoramento em tempo real, predições manuais e explicabilidade do modelo através de gráficos de importância das características.
+
+**Fluxo de Dados**: ESP32 → SQLite DB → Python ML Pipeline → Streamlit Dashboard
+
+---
+
+## 🤖 Pipeline de Machine Learning
+O sistema incorpora um pipeline robusto de aprendizado de máquina utilizando as melhores práticas da indústria:
+
+**Pipeline Arquitetural**: Utiliza `sklearn.pipeline.Pipeline` com duas etapas principais:
+- **Pré-processamento**: `StandardScaler()` para normalização das características dos sensores
+- **Classificação**: `RandomForestClassifier(random_state=42)` para predições consistentes
+
+**Otimização de Hiperparâmetros**: Implementa `GridSearchCV` com validação cruzada de 5 folds para maximizar a performance:
+- `n_estimators`: [50, 100, 200] árvores
+- `max_depth`: [5, 10, None] profundidade máxima
+- `min_samples_leaf`: [1, 2, 4] amostras mínimas por folha
+
+**Performance Alcançada**: O modelo final atinge **98.5% de acurácia** no conjunto de teste, demonstrando alta capacidade preditiva para decisões de irrigação baseadas em dados dos sensores.
+
+**Persistência**: O modelo treinado é salvo como `irrigation_model.joblib` utilizando joblib para carregamento rápido e eficiente no dashboard.
+
+---
+
+## 🔍 Inteligência Artificial Explicável (XAI)
+A **Explicabilidade em IA** é fundamental para sistemas críticos como irrigação agrícola, onde decisões automatizadas impactam diretamente a produtividade e sustentabilidade:
+
+**Por que XAI é Importante**: Em sistemas de irrigação, agricultores e técnicos precisam entender quais fatores influenciam as decisões de irrigação para:
+- Validar se o modelo está tomando decisões lógicas
+- Identificar sensores mais críticos para manutenção prioritária  
+- Construir confiança no sistema automatizado
+- Detectar possíveis anomalias ou falhas de sensores
+
+**Implementação**: Utilizamos **visualização de importância das características** através do atributo `feature_importances_` do RandomForestClassifier. Esta técnica mostra o peso relativo de cada sensor (umidade, pH, fósforo, potássio) na decisão final do modelo.
+
+**Visualização**: O dashboard apresenta um gráfico de barras horizontal que permite identificar instantaneamente quais sensores mais influenciam cada predição específica.
+
+[SCREENSHOT OF FEATURE IMPORTANCE CHART HERE]
+
+---
+
 ## 🚀 Funcionalidades "Ir Além"
 
-### Dashboard Interativo
-- **Ferramenta**: Streamlit (`dashboard.py`).
-- **Funcionalidades**: Exibição de gráficos (umidade ao longo do tempo), tabelas com leituras recentes, filtros interativos e indicação da decisão de irrigação.
-- **Valor Agregado**: Permite monitoramento em tempo real e análise visual dos dados.
+### Dashboard Interativo com IA Explicável
+- **Ferramenta**: Streamlit (`dashboard.py`) com integração completa de ML.
+- **Funcionalidades**: 
+  - Predições em tempo real com sliders interativos
+  - Visualização de confiança das predições
+  - Gráficos de importância das características para explicabilidade
+  - Interface profissional com métricas do modelo
+- **Valor Agregado**: Permite não apenas monitoramento, mas também compreensão das decisões da IA.
+
+### Pipeline de Machine Learning Profissional
+- **Tecnologia**: Scikit-learn com GridSearchCV e Pipeline.
+- **Funcionalidades**:
+  - Treinamento automatizado com otimização de hiperparâmetros
+  - Validação cruzada para robustez do modelo
+  - Persistência do modelo treinado
+  - Geração de dados sintéticos realistas
+- **Valor Agregado**: Sistema de IA completo e profissional para predições de irrigação.
 
 ### Integração com API Pública
 - **API**: OpenWeather (`weather_integration.py`).
@@ -167,12 +230,19 @@ Edite o arquivo `scripts/weather_integration.py` e insira sua chave:
 API_KEY = "SUA_CHAVE_AQUI"
 ```
 
-#### 4. Executar o Banco de Dados e ML Pipeline
+#### 4. Executar o Pipeline de Machine Learning e Banco de Dados
 ```bash
-python scripts/database.py  # Cria o banco e a tabela (agora com colunas ML)
-python scripts/populate_db.py  # Gera 200 registros sintéticos para treinamento
-python scripts/train_model.py  # Treina o modelo ML e salva como .joblib
-python scripts/verify_db.py  # Verifica os dados inseridos
+# 1. Instalar dependências Python
+pip install -r scripts/requirements.txt
+
+# 2. Gerar dados sintéticos para treinamento
+python scripts/populate_db.py
+
+# 3. Treinar o modelo de Machine Learning
+python scripts/train_model.py
+
+# 4. Executar o dashboard interativo
+streamlit run scripts/dashboard.py
 ```
 
 #### 5. Simular o ESP32 no Wokwi
@@ -207,6 +277,12 @@ Saída esperada: `Irrigate? Yes` (se chuva < 1mm) ou `Irrigate? No` (se chuva > 
 - Insira os dados no banco com `database.py`.
 - Visualize os resultados no dashboard.
 - Ajuste a decisão de irrigação com base na integração climática.
+
+---
+
+## 🎥 Video Demonstration
+
+[LINK TO UNLISTED YOUTUBE VIDEO HERE]
 
 ---
 

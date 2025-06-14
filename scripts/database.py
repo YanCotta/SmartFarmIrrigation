@@ -13,16 +13,18 @@ CREATE TABLE IF NOT EXISTS irrigation_data (
     potassium INTEGER,      -- Potassium presence (0 or 1)
     ph REAL,                -- Soil pH value
     pump_state INTEGER,     -- Pump state (0 = off, 1 = on)
+    prediction_confidence REAL,  -- ML model confidence
+    model_version TEXT,     -- Model version used
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 )
 ''')
 print("Table created or already exists.")
 
 # CRUD Functions
-def create_data(humidity, phosphorus, potassium, ph, pump_state):
+def create_data(humidity, phosphorus, potassium, ph, pump_state, prediction_confidence=None, model_version=None):
     """Insert new sensor data into the database."""
-    cursor.execute('INSERT INTO irrigation_data (humidity, phosphorus, potassium, ph, pump_state) VALUES (?, ?, ?, ?, ?)',
-                   (humidity, phosphorus, potassium, ph, pump_state))
+    cursor.execute('INSERT INTO irrigation_data (humidity, phosphorus, potassium, ph, pump_state, prediction_confidence, model_version) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                   (humidity, phosphorus, potassium, ph, pump_state, prediction_confidence, model_version))
     conn.commit()
     print("Data inserted.")
 
@@ -49,8 +51,8 @@ def delete_data(id):
 # Example usage
 if __name__ == "__main__":
     # Insert simulated data
-    create_data(45.0, 1, 1, 6.5, 1)
-    create_data(60.0, 0, 1, 7.2, 0)
+    create_data(45.0, 1, 1, 6.5, 1, 0.95, "v1.0")
+    create_data(60.0, 0, 1, 7.2, 0, 0.87, "v1.0")
 
     # Print stored data
     print("Stored Data:")

@@ -1,7 +1,7 @@
 import sqlite3
 
 # Connect to SQLite database
-conn = sqlite3.connect('irrigation.db')
+conn = sqlite3.connect('../irrigation.db')
 cursor = conn.cursor()
 
 # Create table aligned with simplified MER from Fase 2

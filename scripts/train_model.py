@@ -23,7 +23,7 @@ pipeline = Pipeline([
 print("Loading data from irrigation.db database...")
 
 # Load data from the irrigation.db database
-conn = sqlite3.connect('irrigation.db')
+conn = sqlite3.connect('../irrigation.db')
 query = """
 SELECT humidity, phosphorus, potassium, ph, pump_state 
 FROM irrigation_data 
@@ -77,7 +77,7 @@ print("\nClassification Report:")
 print(classification_report(y_test, y_pred))
 
 # Save the best model
-model_filename = 'irrigation_model.joblib'
+model_filename = '../irrigation_model.joblib'
 joblib.dump(grid_search.best_estimator_, model_filename)
 print(f"\nBest model saved to {model_filename}")
 

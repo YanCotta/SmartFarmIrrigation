@@ -1,6 +1,6 @@
-sqlite3
 streamlit
 pandas
 matplotlib
 requests
 scikit-learn
+joblib

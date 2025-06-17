@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from database import create_data
 
 # Connect to the irrigation.db database
-conn = sqlite3.connect('irrigation.db')
+conn = sqlite3.connect('../irrigation.db')
 
 print("Starting database population with 200 synthetic records...")
 

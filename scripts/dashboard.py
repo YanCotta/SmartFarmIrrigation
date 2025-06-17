@@ -1,41 +1,5 @@
 import streamlit as st
 import pandas as pd
-import joblib
-import os
-
-# Set page configuration for a professional look
-st.set_page_config(page_title="SmartFarmIrrigation Dashboard", layout="wide", page_icon="🌱")
-
-# Load the trained model pipeline
-model_path = "irrigation_model.joblib"
-model = None
-
-try:
-    if os.path.exists(model_path):
-        model = joblib.load(model_path)
-    else:
-        st.error("❌ Model file not found! Please run the training script first: `python train_model.py`")
-        st.stop()
-except Exception as e:
-    st.error(f"❌ Error loading model: {str(e)}")
-    st.stop()
-
-# Dashboard title and header
-st.title("🌱 SmartFarmIrrigation Dashboard")
-st.markdown("**Sistema de Irrigação Inteligente com IA e Explicabilidade**")
-
-# Model Performance Overview Section
-st.subheader("🔍 Model Performance Overview")
-col1, col2, col3 = st.columns(3)
-with col1:
-    st.metric("Model Type", "Random Forest with Pipeline")
-with col2:
-    st.metric("Model Version", "v1.0")
-with col3:
-    st.metric("Training Accuracy", "98.5%")
-
-import streamlit as st
-import pandas as pd
 import numpy as np
 from utils import load_model, make_prediction, plot_feature_importance
 
@@ -82,9 +46,9 @@ if predict_button:
     # Collect inputs into DataFrame matching model's expected format
     input_data = pd.DataFrame({
         'humidity': [humidity],
-        'ph': [ph], 
         'phosphorus': [phosphorus],
-        'potassium': [potassium]
+        'potassium': [potassium],
+        'ph': [ph]
     })
     
     # Make prediction using utility function
@@ -101,7 +65,7 @@ if predict_button:
     st.subheader('💡 Why did the AI decide this?')
     
     # Plot feature importance using utility function
-    feature_names = ['humidity', 'ph', 'phosphorus', 'potassium']
+    feature_names = ['humidity', 'phosphorus', 'potassium', 'ph']
     plot_feature_importance(model, feature_names)
 
 # Additional information section

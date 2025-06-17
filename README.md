@@ -50,19 +50,22 @@ A modelagem de dados segue o **Modelo Entidade-Relacionamento (MER)** simplifica
 ```
 .github/                 # Configurações do GitHub (e.g., workflows)
 assets/                  # Imagens (logo FIAP, capturas de tela)
-document/                # Documentação (ai_project_document_fiap.md, agora excluído)
 scripts/                 # Scripts Python
 ├── database.py          # Criação e gerenciamento do banco SQLite
 ├── dashboard.py         # Dashboard interativo com Streamlit
+├── utils.py             # Funções utilitárias modulares para dashboard
 ├── weather_integration.py # Integração com a API OpenWeather
 ├── verify_db.py         # Script para verificar o banco de dados
 ├── populate_db.py       # Geração de dados sintéticos para ML
 ├── train_model.py       # Pipeline de treinamento de ML
 ├── requirements.txt     # Dependências Python
-├── irrigation_model.joblib # Modelo ML treinado (gerado)
 src/                     # Código-fonte C++ para ESP32
 ├── config.h             # Arquivo de configuração centralizado
 ├── prog1.ino            # Código principal do ESP32 (refatorado)
+irrigation.db            # Banco de dados SQLite (gerado)
+irrigation_model.joblib  # Modelo ML treinado (gerado)
+PHASE4_TEST_PLAN.md      # Plano de testes da Fase 4
+MANUAL_TESTS_TODO.md     # Lista de testes manuais pendentes
 .pio/build/              # Arquivos de build do PlatformIO (ignorado no git)
 .vscode/                 # Configurações do Visual Studio Code
 diagram.json             # Configuração do circuito no Wokwi

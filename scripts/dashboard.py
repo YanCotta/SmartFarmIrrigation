@@ -1,13 +1,12 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 from utils import load_model, make_prediction, plot_feature_importance
 
 # Set page configuration for a professional look
 st.set_page_config(page_title="SmartFarmIrrigation Dashboard", layout="wide", page_icon="🌱")
 
 # Load the trained model pipeline
-model_path = "irrigation_model.joblib"
+model_path = "../irrigation_model.joblib"
 model = load_model(model_path)
 
 if model is None:

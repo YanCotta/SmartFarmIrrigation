@@ -14,12 +14,13 @@ AgroTech Innovators
 ## 👨‍🎓 Integrantes
 - [Yan Cotta](https://www.linkedin.com/in/yan-cotta/)
 
-## 👩‍🏫 Professores
-### Tutor(a)
-- Lucas Gomes Moreira
+## 👩‍🏫 Professores:
+### Tutor(a) 
+- <a href="https://www.linkedin.com/in/lucas-gomes-moreira-15a8452a/">Lucas Moreira</a>
 
 ### Coordenador(a)
-- André Godoi Chiovato
+- <a href="https://www.linkedin.com/in/andregodoichiovato/">André Godoi</a>
+
 
 ## 📝 Sobre o Projeto
 O **SmartFarmIrrigation** é um sistema inteligente de irrigação desenvolvido para a FarmTech Solutions como parte do curso de Inteligência Artificial e Machine Learning da FIAP. Este projeto simula um sistema IoT (Internet das Coisas) que utiliza um microcontrolador ESP32 na plataforma Wokwi para coletar dados de sensores de umidade do solo, pH, fósforo e potássio, e controlar um relé para irrigação com base em condições ambientais e climáticas. O sistema foi projetado para otimizar o uso da água em fazendas, irrigando apenas quando necessário, considerando critérios como umidade do solo inferior a 50%, pH entre 6 e 7, presença de fósforo e potássio, e chuva recente inferior a 1mm.
@@ -91,17 +92,6 @@ Essa modelagem reflete uma abordagem prática e eficiente, eliminando a necessid
 ---
 
 ## 📊 Entregáveis
-
-### Entrega 1: Sistema de Sensores e Controle com ESP32
-- **Circuito**: Implementado no Wokwi, configurado em `diagram.json`.
-- **Código**: `src/prog1.ino` (C++), com lógica de irrigação comentada para facilitar a compreensão.
-- **Funcionalidade**: Lê dados de sensores (umidade, pH, fósforo, potássio) e ativa o relé da bomba conforme condições predefinidas.
-- **Documentação**: Detalhada neste README e ilustrada em `wokwi_simulation.png`.
-
-### Entrega 2: Armazenamento de Dados em Banco SQL
-- **Script**: `database.py` (Python), responsável pela criação da tabela `irrigation_data` e operações CRUD.
-- **Verificação**: `verify_db.py` para validar a integridade dos dados inseridos.
-- **MER**: Simplificado, conforme descrito na seção anterior, com justificativa para a escolha de uma única tabela.
 
 ### Entrega 3 (Fase 4): Refatoração Profissional e Machine Learning
 - **Firmware ESP32**: Código completamente refatorado para seguir padrões profissionais:

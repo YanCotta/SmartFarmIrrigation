@@ -17,7 +17,7 @@ except requests.exceptions.RequestException as e:
     rain = 0  # Default to no rain if API fails
 
 # Connect to database and get latest sensor data
-conn = sqlite3.connect('../irrigation.db')
+conn = sqlite3.connect('irrigation.db')
 cursor = conn.cursor()
 cursor.execute("SELECT humidity, phosphorus, potassium, ph FROM irrigation_data ORDER BY id DESC LIMIT 1")
 humidity, phosphorus, potassium, ph = cursor.fetchone()

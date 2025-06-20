@@ -1,5 +1,17 @@
 # 📋 Comprehensive Test Report - Smart Farm Irrigation System
 
+---
+
+## 📚 Navegação da Documentação
+
+| **Documento** | **Descrição** | **Link** |
+|---------------|---------------|----------|
+| 📖 **README Principal** | Documentação completa do projeto | **[README.md](./README.md)** |
+| 🚀 **Guia de Instalação** | Setup rápido e resolução de problemas | **[INSTALL.md](./INSTALL.md)** |
+| 🧪 **Relatório de Testes** | Testes completos e validação do sistema | *[Você está aqui]* |
+
+---
+
 ## 🎯 Project Overview
 **Sistema de Irrigação Inteligente com IA e Explicabilidade**
 - **Objetivo**: Sistema IoT com ESP32 + Dashboard Python + Machine Learning

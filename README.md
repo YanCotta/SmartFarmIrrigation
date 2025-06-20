@@ -333,7 +333,7 @@ Saída esperada: `Irrigate? Yes` (se chuva < 1mm) ou `Irrigate? No` (se chuva > 
 ### Demonstração Completa do Sistema
 Assista à demonstração completa do SmartFarmIrrigation mostrando todos os componentes funcionando em integração:
 
-**[📹 LINK PARA VÍDEO DEMONSTRAÇÃO - YouTube](ADICIONAR_LINK_AQUI)**
+**[📹 VÍDEO DEMONSTRAÇÃO - SmartFarmIrrigation Completo](https://youtu.be/ILORAIq6syc)**
 
 ### Conteúdo da Demonstração:
 - ⚡ **Simulação Hardware**: ESP32 no Wokwi com sensores funcionais

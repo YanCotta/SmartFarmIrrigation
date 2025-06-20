@@ -6,6 +6,24 @@
 .pio
 .vscode
 
+# Project-specific generated files
+/irrigation.db
+/irrigation_model.joblib
+/.env
+
+# Python cache and virtual environment
+*.pyc
+__pycache__/
+.venv/
+venv/
+*.pyo
+*.pyd
+.Python
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+
 # User-specific files
 *.rsuser
 *.suo

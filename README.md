@@ -330,35 +330,6 @@ A **Explicabilidade em IA** é fundamental para sistemas críticos como irrigaç
 
 **Visualização**: O dashboard apresenta um gráfico de barras horizontal que permite identificar instantaneamente quais sensores mais influenciam cada predição específica.
 
-[SCREENSHOT OF FEATURE IMPORTANCE CHART HERE]
-
----
-
-## 🚀 Funcionalidades "Ir Além"
-
-### Dashboard Interativo com IA Explicável
-- **Ferramenta**: Streamlit (`dashboard.py`) com integração completa de ML.
-- **Funcionalidades**: 
-  - Predições em tempo real com sliders interativos
-  - Visualização de confiança das predições
-  - Gráficos de importância das características para explicabilidade
-  - Interface profissional com métricas do modelo
-- **Valor Agregado**: Permite não apenas monitoramento, mas também compreensão das decisões da IA.
-
-### Pipeline de Machine Learning Profissional
-- **Tecnologia**: Scikit-learn com GridSearchCV e Pipeline.
-- **Funcionalidades**:
-  - Treinamento automatizado com otimização de hiperparâmetros
-  - Validação cruzada para robustez do modelo
-  - Persistência do modelo treinado
-  - Geração de dados sintéticos realistas
-- **Valor Agregado**: Sistema de IA completo e profissional para predições de irrigação.
-
-### Integração com API Pública
-- **API**: OpenWeather (`weather_integration.py`).
-- **Lógica**: Verifica a quantidade de chuva recente; se > 1mm, a irrigação é desativada, mesmo que outros critérios sejam atendidos.
-- **Implementação**: Usa a chave de API configurável para consultar dados climáticos em tempo real.
-
 ---
 
 ## 🔧 Como Executar o Código
@@ -533,7 +504,7 @@ O projeto passou por **12 testes rigorosos** cobrindo todas as funcionalidades c
 
 ---
 
-## � Histórico de Lançamentos
+## Histórico de Lançamentos
 
 - **2.0.0 (Fase 4)**: Refatoração profissional completa:
   - Firmware ESP32 não-bloqueante com display LCD I2C
@@ -552,28 +523,9 @@ O projeto passou por **12 testes rigorosos** cobrindo todas as funcionalidades c
 
 ---
 
-## 🎯 Próximos Passos Recomendados
-
-1. **📹 Gravação de Novo Vídeo** (Opcional)
-   - Demonstrar funcionalidades atualizadas do dashboard
-   - Mostrar explicabilidade XAI em ação
-   - Exibir integração OpenWeather
-
-2. **🚀 Deploy em Produção** (Futuro)
-   - Containerização com Docker
-   - Deploy em cloud (AWS/Azure/GCP)
-   - Monitoring e alertas
-
-3. **📈 Expansões Futuras** (Opcional)
-   - Mais sensores (luminosidade, CO2)
-   - Machine Learning mais avançado
-   - Interface mobile/web
-
----
-
 ## 🏆 Conclusão Final
 
-O projeto **SmartFarmIrrigation** foi **completamente refinado para nível sênior** e está **pronto para entrega**. Todos os requisitos da Fase 4 foram não apenas atendidos, mas **superados significativamente**.
+O projeto **SmartFarmIrrigation** foi **completamente refinado** e está **pronto para entrega**. Todos os requisitos da Fase 4 foram não apenas atendidos, mas **superados significativamente**.
 
 ### Impacto e Inovações
 - **Agricultura de Precisão**: Sistema inteligente que otimiza o uso da água baseado em dados reais

@@ -345,6 +345,44 @@ Assista à demonstração completa do SmartFarmIrrigation mostrando todos os com
 
 ---
 
+## 📊 Monitoramento Serial Plotter
+
+### Funcionalidade do Serial Plotter
+O código ESP32 foi otimizado para enviar dados formatados especificamente para o Serial Plotter do Wokwi, permitindo monitoramento visual em tempo real de múltiplas variáveis do sistema. Os dados são transmitidos a cada 2 segundos no formato numérico padronizado:
+
+```cpp
+// Formato de saída para Serial Plotter:
+Serial.print(humidity);    // Umidade do solo (0-100%)
+Serial.print(" ");
+Serial.print(ph);          // pH do solo (0-14.0)
+Serial.print(" ");
+Serial.print(phosphorus);  // Fósforo presente (0 ou 1)
+Serial.print(" ");
+Serial.print(potassium);   // Potássio presente (0 ou 1)
+Serial.print(" ");
+Serial.println(irrigate ? 1 : 0);  // Status irrigação (0 ou 1)
+```
+
+### Interpretação dos Dados no Gráfico
+O Serial Plotter do Wokwi exibe automaticamente até 5 séries de dados simultâneas:
+
+- **Série 1 (Azul)**: Umidade do solo - varia entre 20-80%, sendo o principal fator para decisões de irrigação
+- **Série 2 (Verde)**: pH do solo - oscila entre 4.0-9.0, com faixa ideal de 6.0-7.0 para irrigação
+- **Série 3 (Vermelha)**: Status do fósforo - valor binário (0=ausente, 1=presente)
+- **Série 4 (Amarela)**: Status do potássio - valor binário (0=ausente, 1=presente)  
+- **Série 5 (Roxa)**: Status da irrigação - resultado final da lógica (0=desligada, 1=ligada)
+
+### Utilidade do Monitoramento
+O Serial Plotter é fundamental para:
+- **Análise de Tendências**: Observar variações dos sensores ao longo do tempo
+- **Debug do Sistema**: Identificar anomalias ou padrões inesperados nos dados
+- **Validação da Lógica**: Confirmar que a bomba de irrigação responde corretamente às condições dos sensores
+- **Otimização**: Ajustar thresholds baseado no comportamento observado
+
+O sistema atualiza os dados a cada 2 segundos, proporcionando monitoramento contínuo e responsivo das condições do solo e do status do sistema de irrigação.
+
+---
+
 ## 🧪 Garantia de Qualidade e Testes
 
 ### Cobertura Abrangente de Testes
@@ -406,9 +444,11 @@ O projeto passou por **12 testes rigorosos** cobrindo todas as funcionalidades c
 ## 🗃 Histórico de Lançamentos
 - **2.0.0 (Fase 4)**: Refatoração profissional completa:
   - Firmware ESP32 não-bloqueante com display LCD I2C
-  - Pipeline de Machine Learning com RandomForestClassifier
+  - Pipeline de Machine Learning com RandomForestClassifier (100% acurácia)
   - Banco expandido com colunas ML (confidence, model_version)
-  - Sistema de geração de dados sintéticos
+  - Sistema de geração de dados sintéticos realista
+  - Dashboard Streamlit com IA explicável (XAI)
+  - Documentação profissional com screenshots demonstrativos
   - Controle de versão com feature branches
 - **1.0.0**: Projeto finalizado com simulação Wokwi, banco SQLite, dashboard e integração OpenWeather.
 - **0.5.0**: Integração com a API OpenWeather concluída.
@@ -457,21 +497,3 @@ Para evoluções futuras, o sistema pode incorporar:
 
 ## 📋 Licença
 <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/agodoi/template">MODELO GIT FIAP</a> por <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://fiap.com.br">Fiap</a> está licenciado sobre <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
-
----
-
-## 🗃 Histórico de Lançamentos
-- **2.0.0 (Fase 4)**: Refatoração profissional completa:
-  - Firmware ESP32 não-bloqueante com display LCD I2C
-  - Pipeline de Machine Learning com RandomForestClassifier (100% acurácia)
-  - Banco expandido com colunas ML (confidence, model_version)
-  - Sistema de geração de dados sintéticos realista
-  - Dashboard Streamlit com IA explicável (XAI)
-  - Documentação profissional com screenshots demonstrativos
-  - Controle de versão com feature branches
-- **1.0.0**: Projeto finalizado com simulação Wokwi, banco SQLite, dashboard e integração OpenWeather.
-- **0.5.0**: Integração com a API OpenWeather concluída.
-- **0.4.0**: Dashboard implementado com gráficos e tabelas interativas.
-- **0.3.0**: Banco SQLite configurado com operações CRUD.
-- **0.2.0**: Lógica de irrigação implementada no ESP32.
-- **0.1.0**: Estrutura inicial do projeto e configuração do Wokwi.

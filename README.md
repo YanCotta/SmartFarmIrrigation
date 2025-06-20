@@ -87,7 +87,7 @@ Com umidade baixa (30%) e condições adequadas de pH e nutrientes, o sistema re
 ![Predição - Irrigar](./assets/prediction_irrigate.png)  
 *Sistema recomenda irrigar com baixa umidade, demonstrando lógica de IA explicável*
 
-### 🌤️ Integração com API Climática
+### 🌤️ Possível Integração com API Climática
 O sistema integra dados meteorológicos da API OpenWeather para considerar precipitação recente nas decisões de irrigação, evitando irrigação desnecessária após chuvas naturais.
 
 ![Integração OpenWeather](./assets/openweather_functional_api.PNG)  
@@ -108,7 +108,7 @@ Assista à demonstração completa do SmartFarmIrrigation mostrando todos os com
 - 🌐 **Dashboard Interativo**: Predições de IA com explicabilidade
 - 🔗 **Integração Completa**: Fluxo end-to-end do sistema
 
-*Duração: 5-7 minutos | Qualidade: 1080p HD*
+*Duração: 4 minutos | Qualidade: 1080p HD*
 
 ---
 

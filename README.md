@@ -50,10 +50,10 @@ A simulação Wokwi integra todos os componentes necessários: microcontrolador 
 ### 🧠 Pipeline de Machine Learning
 
 #### Treinamento do Modelo
-O sistema utiliza Random Forest com otimização automática de hiperparâmetros via GridSearchCV. O modelo alcança **100% de acurácia**, superando significativamente o requisito mínimo de 95%, demonstrando excelente capacidade de classificação para decisões de irrigação.
+O sistema utiliza Random Forest com otimização automática de hiperparâmetros via GridSearchCV. O modelo alcança **98.77% de acurácia**, superando significativamente o requisito mínimo de 95%, demonstrando excelente capacidade de classificação para decisões de irrigação.
 
 ![Treinamento do Modelo ML](./assets/terminal_model_training.png)  
-*Output do treinamento mostrando 100% de acurácia do modelo Random Forest*
+*Output do treinamento mostrando 98.77% de acurácia do modelo Random Forest*
 
 #### População da Base de Dados
 O script de geração de dados sintéticos cria 200 registros realistas com distribuição equilibrada de cenários de irrigação. Os dados incluem variações de umidade, pH, nutrientes e condições climáticas para treinamento robusto do modelo.
@@ -105,7 +105,7 @@ SmartFarmIrrigation/
 │   ├── dashboard_overview.png      # Interface principal do dashboard
 │   ├── prediction_irrigate.png     # IA recomendando irrigação
 │   ├── prediction_do_not_irrigate.png # IA recomendando não irrigar
-│   ├── terminal_model_training.png # Treinamento ML com 100% acurácia
+│   ├── terminal_model_training.png # Treinamento ML com 98.77% acurácia
 │   ├── terminal_database_population.png # População da base de dados
 │   ├── terminal_esp32_compilation.png # Compilação bem-sucedida ESP32
 │   └── openweather_functional_api.PNG # Integração API climática
@@ -122,7 +122,7 @@ SmartFarmIrrigation/
 │   ├── prog1.ino                  # Programa principal Arduino
 │   └── config.h                   # Configurações centralizadas
 ├── irrigation.db                   # Banco de dados SQLite
-├── irrigation_model.joblib         # Modelo ML treinado (100% acurácia)
+├── irrigation_model.joblib         # Modelo ML treinado (98.77% acurácia)
 ├── COMPREHENSIVE_TEST_REPORT.md    # Relatório completo de testes
 ├── platformio.ini                 # Configuração PlatformIO
 ├── wokwi.toml                     # Configuração simulador Wokwi
@@ -337,7 +337,7 @@ Assista à demonstração completa do SmartFarmIrrigation mostrando todos os com
 
 ### Conteúdo da Demonstração:
 - ⚡ **Simulação Hardware**: ESP32 no Wokwi com sensores funcionais
-- 🧠 **Machine Learning**: Treinamento do modelo com 100% de acurácia  
+- 🧠 **Machine Learning**: Treinamento do modelo com 98.77% de acurácia  
 - 🌐 **Dashboard Interativo**: Predições de IA com explicabilidade
 - 🔗 **Integração Completa**: Fluxo end-to-end do sistema
 
@@ -406,7 +406,7 @@ O projeto passou por **12 testes rigorosos** cobrindo todas as funcionalidades c
 - **Status**: 100% aprovado
 
 #### ✅ Performance & Qualidade (4/4 testes)
-- **Acurácia do Modelo**: 100% acurácia (vs 95% requisito mínimo)
+- **Acurácia do Modelo**: 98.77% acurácia (vs 95% requisito mínimo)
 - **Schema do Banco**: Migração com novas colunas ML realizada
 - **Documentação**: README completo e profissionalmente estruturado
 - **Qualidade do Código**: Modular, comentado e seguindo boas práticas
@@ -444,7 +444,7 @@ O projeto passou por **12 testes rigorosos** cobrindo todas as funcionalidades c
 ## 🗃 Histórico de Lançamentos
 - **2.0.0 (Fase 4)**: Refatoração profissional completa:
   - Firmware ESP32 não-bloqueante com display LCD I2C
-  - Pipeline de Machine Learning com RandomForestClassifier (100% acurácia)
+  - Pipeline de Machine Learning com RandomForestClassifier (98.77% acurácia)
   - Banco expandido com colunas ML (confidence, model_version)
   - Sistema de geração de dados sintéticos realista
   - Dashboard Streamlit com IA explicável (XAI)
@@ -489,7 +489,7 @@ Para evoluções futuras, o sistema pode incorporar:
 
 | **Categoria** | **Meta** | **Alcançado** | **Status** |
 |---------------|----------|---------------|------------|
-| Acurácia ML | ≥ 95% | **100%** | ✅ Superado |
+| Acurácia ML | ≥ 95% | **98.77%** | ✅ Superado |
 | Testes | 100% | **12/12** | ✅ Completo |
 | Documentação | Completa | **Profissional** | ✅ Excelente |
 | Funcionalidades | Básicas | **Avançadas + XAI** | ✅ Superado |

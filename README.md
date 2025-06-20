@@ -95,6 +95,23 @@ O sistema integra dados meteorológicos da API OpenWeather para considerar preci
 
 ---
 
+## 🎥 Vídeo Demonstração
+
+### Demonstração Completa do Sistema
+Assista à demonstração completa do SmartFarmIrrigation mostrando todos os componentes funcionando em integração:
+
+**[📹 VÍDEO DEMONSTRAÇÃO - SmartFarmIrrigation Completo](https://youtu.be/ILORAIq6syc)**
+
+### Conteúdo da Demonstração:
+- ⚡ **Simulação Hardware**: ESP32 no Wokwi com sensores funcionais
+- 🧠 **Machine Learning**: Treinamento do modelo com 98.77% de acurácia  
+- 🌐 **Dashboard Interativo**: Predições de IA com explicabilidade
+- 🔗 **Integração Completa**: Fluxo end-to-end do sistema
+
+*Duração: 5-7 minutos | Qualidade: 1080p HD*
+
+---
+
 ## 📁 Estrutura de Pastas
 ```
 SmartFarmIrrigation/
@@ -325,23 +342,6 @@ Saída esperada: `Irrigate? Yes` (se chuva < 1mm) ou `Irrigate? No` (se chuva > 
 - Insira os dados no banco com `database.py`.
 - Visualize os resultados no dashboard.
 - Ajuste a decisão de irrigação com base na integração climática.
-
----
-
-## 🎥 Vídeo Demonstração
-
-### Demonstração Completa do Sistema
-Assista à demonstração completa do SmartFarmIrrigation mostrando todos os componentes funcionando em integração:
-
-**[📹 VÍDEO DEMONSTRAÇÃO - SmartFarmIrrigation Completo](https://youtu.be/ILORAIq6syc)**
-
-### Conteúdo da Demonstração:
-- ⚡ **Simulação Hardware**: ESP32 no Wokwi com sensores funcionais
-- 🧠 **Machine Learning**: Treinamento do modelo com 98.77% de acurácia  
-- 🌐 **Dashboard Interativo**: Predições de IA com explicabilidade
-- 🔗 **Integração Completa**: Fluxo end-to-end do sistema
-
-*Duração: 5-7 minutos | Qualidade: 1080p HD*
 
 ---
 
